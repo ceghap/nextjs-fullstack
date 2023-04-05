@@ -6,12 +6,12 @@ Just a template containing couple of packages for me to get started faster
 
 - Nextjs
 - tailwindcss
+- prisma
+- nextauth
+- supabase (use only as db hosting)
 
 ### Will add
 
-- supabase
-- prisma
-- nextauth
 - react query
 
 ## Getting started
