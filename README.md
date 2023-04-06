@@ -24,7 +24,7 @@ Just a template containing couple of packages for me to get started faster
 - You can check your database that it now contains couple of tables
 - Run `npx prisma generate` to generate prisma client, so that you can query prisma orm
 
-You can you whatever database [supported by prisma](https://www.prisma.io/docs/reference/database-reference/supported-databases). Just edit the schema.prisma to integrate with your db. Refer here [Prisma schema reference](https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference)
+You can use whatever database [supported by prisma](https://www.prisma.io/docs/reference/database-reference/supported-databases). Just edit the schema.prisma to integrate with your db. Refer here [Prisma schema reference](https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference)
 
 ### Prisma notes
 
