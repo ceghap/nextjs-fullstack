@@ -6,9 +6,10 @@ Just a template containing couple of packages for me to get started faster
 
 - Nextjs
 - tailwindcss
-- prisma
+- prisma (I use supabase as db hosting)
 - nextauth
-- supabase (use only as db hosting)
+- React hook form
+- Zod
 
 ### Will add
 
@@ -22,6 +23,8 @@ Just a template containing couple of packages for me to get started faster
 - Run prisma migrate to populate tabels in your db based on schema.prisma `npx prisma migrate dev --name init`
 - You can check your database that it now contains couple of tables
 - Run `npx prisma generate` to generate prisma client, so that you can query prisma orm
+
+You can you whatever database [supported by prisma](https://www.prisma.io/docs/reference/database-reference/supported-databases). Just edit the schema.prisma to integrate with your db. Refer here [Prisma schema reference](https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference)
 
 ### Prisma notes
 
