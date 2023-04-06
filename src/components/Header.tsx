@@ -1,5 +1,3 @@
-import React from "react";
-
 const Header = () => {
   return (
     <header>
@@ -189,7 +187,10 @@ const Header = () => {
                       <span className="font-semibold text-gray-900 dark:text-white">
                         Bonnie Green
                       </span>
-                      : "Hey, what's up? All set for the presentation?"
+                      <span>
+                        : &quot;Hey, what&apos;s up? All set for the
+                        presentation?&quot;
+                      </span>
                     </div>
                     <div className="text-primary-700 dark:text-primary-400 text-xs font-medium">
                       a few moments ago
