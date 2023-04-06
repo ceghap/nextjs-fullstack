@@ -22,6 +22,7 @@ const About = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<Contact>({
+    mode: "onBlur",
     resolver: zodResolver(contactSchema),
   });
 

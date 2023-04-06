@@ -26,6 +26,7 @@ export default function Signin() {
     handleSubmit,
     formState: { errors },
   } = useForm<Login>({
+    mode: "onBlur",
     resolver: zodResolver(loginSchema),
   });
 
