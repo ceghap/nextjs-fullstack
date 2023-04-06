@@ -1,9 +1,36 @@
 import PublicLayout from "@/components/layouts/PublicLayout";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
 import Head from "next/head";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
+import { z } from "zod";
+
+const loginSchema = z.object({
+  email: z.string().min(1, { message: "Email is required" }).email({
+    message: "Must be a valid email",
+  }),
+  password: z
+    .string()
+    .min(6, { message: "Password must be atleast 6 characters" }),
+});
+
+// extracting the type
+type Login = z.infer<typeof loginSchema>;
 
 export default function Signin() {
+  const {
+    register,
+    setValue,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Login>({
+    resolver: zodResolver(loginSchema),
+  });
+
+  const onSubmit = handleSubmit((data) => console.log(data));
+
   return (
     <PublicLayout>
       <Head>
@@ -20,6 +47,87 @@ export default function Signin() {
                 <h1 className="text-center text-xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-2xl">
                   Sign in to your account
                 </h1>
+
+                <form onSubmit={onSubmit}>
+                  <div className="mb-6">
+                    <label
+                      htmlFor="email"
+                      className={`mb-2 block text-sm font-medium ${
+                        errors.email
+                          ? "text-red-500 dark:text-red-600"
+                          : "text-gray-900 dark:text-white"
+                      }`}
+                    >
+                      Email address
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      className={`block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 ${
+                        errors.email
+                          ? "focus:border-red-500 focus:ring-red-500 dark:focus:border-red-500 dark:focus:ring-red-500"
+                          : "focus:border-blue-500 focus:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      }  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 `}
+                      placeholder="john.doe@company.com"
+                      required
+                      {...register("email")}
+                    />
+                    {errors.email && (
+                      <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                        {errors.email?.message}
+                      </p>
+                    )}
+                  </div>
+                  <div className="mb-6">
+                    <label
+                      htmlFor="password"
+                      className={`mb-2 block text-sm font-medium ${
+                        errors.password
+                          ? "text-red-500 dark:text-red-600"
+                          : "text-gray-900 dark:text-white"
+                      }`}
+                    >
+                      Password
+                    </label>
+                    <input
+                      type="password"
+                      id="password"
+                      className={`block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 ${
+                        errors.password
+                          ? "focus:border-red-500 focus:ring-red-500 dark:focus:border-red-500 dark:focus:ring-red-500"
+                          : "focus:border-blue-500 focus:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      }  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 `}
+                      placeholder="•••••••••"
+                      required
+                      {...register("password")}
+                    />
+                    {errors.password && (
+                      <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                        {errors.password?.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
+                  >
+                    Sign in
+                  </button>
+                </form>
+
+                <label className="mt-4 text-center text-sm font-medium text-gray-900 dark:text-gray-300">
+                  Dont have an account?{" "}
+                  <Link
+                    href="/signup"
+                    className="text-blue-600 hover:underline dark:text-blue-500"
+                  >
+                    Sign up
+                  </Link>
+                  .
+                </label>
+
+                <hr />
 
                 <button
                   className="flex w-full items-center justify-center space-x-2 rounded-md border p-2"
