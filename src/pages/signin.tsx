@@ -24,7 +24,7 @@ export default function Signin() {
     register,
     setValue,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting, isDirty, isValid },
   } = useForm<Login>({
     mode: "onBlur",
     resolver: zodResolver(loginSchema),
@@ -110,8 +110,9 @@ export default function Signin() {
                   </div>
 
                   <button
+                    disabled={!isDirty || !isValid || isSubmitting}
                     type="submit"
-                    className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
+                    className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 disabled:opacity-75 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
                   >
                     Sign in
                   </button>

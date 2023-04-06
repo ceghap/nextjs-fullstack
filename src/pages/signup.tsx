@@ -34,7 +34,7 @@ export default function Signup() {
     register,
     setValue,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting, isDirty, isValid },
   } = useForm<Register>({
     mode: "onBlur",
     resolver: zodResolver(registerSchema),
@@ -164,12 +164,12 @@ export default function Signup() {
                         className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                       >
                         I agree with the{" "}
-                        <a
-                          href="#"
+                        <Link
+                          href="/terms-and-conditions"
                           className="text-blue-600 hover:underline dark:text-blue-500"
                         >
                           terms and conditions
-                        </a>
+                        </Link>
                         .
                       </label>
                     </div>
@@ -180,8 +180,9 @@ export default function Signup() {
                     )}
                   </div>
                   <button
+                    disabled={!isDirty || !isValid || isSubmitting}
                     type="submit"
-                    className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
+                    className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 disabled:opacity-75 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
                   >
                     Submit
                   </button>
