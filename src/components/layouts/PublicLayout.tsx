@@ -6,7 +6,7 @@ const PublicLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="relative min-h-screen">
       <Navbar />
-      <div className="p-4">{children}</div>
+      <div className="">{children}</div>
       <Footer />
     </div>
   );

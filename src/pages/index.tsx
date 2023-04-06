@@ -83,9 +83,11 @@ export default function Home() {
         </section>
 
         {/* Portfolio section */}
-        <section className="bg-gray-100 py-16">
+        <section className="bg-gray-100 py-16 px-4">
           <div className="container mx-auto">
-            <h2 className="mb-8 text-3xl font-bold">Our Portfolio</h2>
+            <h2 className="mb-8 text-center text-4xl font-bold">
+              Our Portfolio
+            </h2>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               <div className="overflow-hidden rounded-lg bg-white shadow-md">
                 <img
@@ -155,25 +157,27 @@ export default function Home() {
         </section>
 
         {/* Review section */}
-        <section className="py-16">
+        <section className="py-16 px-4">
           <div className="container mx-auto">
-            <h2 className="mb-8 text-3xl font-bold">What Our Clients Say</h2>
+            <h2 className="mb-8 text-center text-4xl font-bold">
+              What Our Clients Say
+            </h2>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               <div className="rounded-lg bg-gray-200 py-8 px-6">
                 <blockquote className="mb-4 text-lg">
-                  "Working with the team at My Website was a fantastic
+                  &quot;Working with the team at My Website was a fantastic
                   experience. They were able to take my vision and turn it into
                   a reality, all while keeping me in the loop every step of the
-                  way."
+                  way.&quot;
                 </blockquote>
                 <cite className="font-bold">- John Doe, CEO</cite>
               </div>
               <div className="rounded-lg bg-gray-200 py-8 px-6">
                 <blockquote className="mb-4 text-lg">
-                  "I was blown away by the quality of work that My Website
+                  &quot;I was blown away by the quality of work that My Website
                   delivered. They truly went above and beyond to make sure that
                   everything was perfect. I would highly recommend them to
-                  anyone looking for a top-notch website."
+                  anyone looking for a top-notch website.&quot;
                 </blockquote>
                 <cite className="font-bold">
                   - Jane Smith, Marketing Director
@@ -184,10 +188,12 @@ export default function Home() {
         </section>
 
         {/* Tech used section */}
-        <section className="bg-gray-100 py-16">
+        <section className="bg-gray-100 py-16 px-4">
           <div className="container mx-auto">
-            <h2 className="mb-8 text-3xl font-bold">Technology Stack</h2>
-            <p className="mb-8 text-lg">
+            <h2 className="mb-8 text-center text-4xl font-bold">
+              Technology Stack
+            </h2>
+            <p className="mb-8 text-center text-lg">
               We leverage a wide range of technologies to build high-quality
               websites and web applications. Here are some of the technologies
               we specialize in:
@@ -262,9 +268,9 @@ export default function Home() {
         </section>
 
         {/* CTA */}
-        <section className="bg-gray-100 py-16">
-          <div className="container mx-auto">
-            <h2 className="mb-8 text-3xl font-bold">Ready to Get Started?</h2>
+        <section className="bg-gray-100 py-16 px-4">
+          <div className="container mx-auto text-center">
+            <h2 className="mb-8 text-4xl font-bold">Ready to Get Started?</h2>
             <p className="mb-8 text-lg">
               We&apos;d love to hear about your project and see how we can help.
               Contact us today to schedule a consultation.
