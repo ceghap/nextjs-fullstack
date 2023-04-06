@@ -1,10 +1,46 @@
 import PublicLayout from "@/components/layouts/PublicLayout";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
+import { z } from "zod";
+
+const registerSchema = z
+  .object({
+    email: z.string().min(1, { message: "Email is required" }).email({
+      message: "Must be a valid email",
+    }),
+    password: z
+      .string()
+      .min(6, { message: "Password must be atleast 6 characters" }),
+    confirmPassword: z
+      .string()
+      .min(6, { message: "Password must be atleast 6 characters" }),
+    terms: z.literal(true, {
+      errorMap: () => ({ message: "You must accept Terms and Conditions" }),
+    }),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    path: ["confirmPassword"],
+    message: "Password don't match",
+  });
+
+type Register = z.infer<typeof registerSchema>;
 
 export default function Signup() {
+  const {
+    register,
+    setValue,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Register>({
+    resolver: zodResolver(registerSchema),
+  });
+
+  const onSubmit = handleSubmit((data) => console.log(data));
+
   return (
     <PublicLayout>
       <Head>
@@ -22,75 +58,125 @@ export default function Signup() {
                   Sign up for an account
                 </h1>
 
-                <form>
+                <form onSubmit={onSubmit}>
                   <div className="mb-6">
                     <label
                       htmlFor="email"
-                      className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                      className={`mb-2 block text-sm font-medium ${
+                        errors.email
+                          ? "text-red-500 dark:text-red-600"
+                          : "text-gray-900 dark:text-white"
+                      }`}
                     >
                       Email address
                     </label>
                     <input
                       type="email"
                       id="email"
-                      className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      className={`block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 ${
+                        errors.email
+                          ? "focus:border-red-500 focus:ring-red-500 dark:focus:border-red-500 dark:focus:ring-red-500"
+                          : "focus:border-blue-500 focus:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      }  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 `}
                       placeholder="john.doe@company.com"
                       required
+                      {...register("email")}
                     />
+                    {errors.email && (
+                      <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                        {errors.email?.message}
+                      </p>
+                    )}
                   </div>
                   <div className="mb-6">
                     <label
                       htmlFor="password"
-                      className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                      className={`mb-2 block text-sm font-medium ${
+                        errors.password
+                          ? "text-red-500 dark:text-red-600"
+                          : "text-gray-900 dark:text-white"
+                      }`}
                     >
                       Password
                     </label>
                     <input
                       type="password"
                       id="password"
-                      className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      className={`block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 ${
+                        errors.password
+                          ? "focus:border-red-500 focus:ring-red-500 dark:focus:border-red-500 dark:focus:ring-red-500"
+                          : "focus:border-blue-500 focus:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      }  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 `}
                       placeholder="•••••••••"
                       required
+                      {...register("password")}
                     />
+                    {errors.password && (
+                      <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                        {errors.password?.message}
+                      </p>
+                    )}
                   </div>
                   <div className="mb-6">
                     <label
                       htmlFor="confirm_password"
-                      className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                      className={`mb-2 block text-sm font-medium ${
+                        errors.confirmPassword
+                          ? "text-red-500 dark:text-red-600"
+                          : "text-gray-900 dark:text-white"
+                      }`}
                     >
                       Confirm password
                     </label>
                     <input
                       type="password"
                       id="confirm_password"
-                      className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      className={`block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 ${
+                        errors.confirmPassword
+                          ? "focus:border-red-500 focus:ring-red-500 dark:focus:border-red-500 dark:focus:ring-red-500"
+                          : "focus:border-blue-500 focus:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                      }  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 `}
                       placeholder="•••••••••"
                       required
+                      {...register("confirmPassword")}
                     />
+                    {errors.confirmPassword && (
+                      <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                        {errors.confirmPassword?.message}
+                      </p>
+                    )}
                   </div>
-                  <div className="mb-6 flex items-start">
-                    <div className="flex h-5 items-center">
-                      <input
-                        id="remember"
-                        type="checkbox"
-                        value=""
-                        className="focus:ring-3 h-4 w-4 rounded border border-gray-300 bg-gray-50 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
-                        required
-                      />
-                    </div>
-                    <label
-                      htmlFor="remember"
-                      className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                    >
-                      I agree with the{" "}
-                      <a
-                        href="#"
-                        className="text-blue-600 hover:underline dark:text-blue-500"
+                  <div className="mb-6 ">
+                    <div className="flex items-start">
+                      <div className="flex h-5 items-center">
+                        <input
+                          id="remember"
+                          type="checkbox"
+                          value=""
+                          className="focus:ring-3 h-4 w-4 rounded border border-gray-300 bg-gray-50 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
+                          required
+                          {...register("terms")}
+                        />
+                      </div>
+                      <label
+                        htmlFor="remember"
+                        className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                       >
-                        terms and conditions
-                      </a>
-                      .
-                    </label>
+                        I agree with the{" "}
+                        <a
+                          href="#"
+                          className="text-blue-600 hover:underline dark:text-blue-500"
+                        >
+                          terms and conditions
+                        </a>
+                        .
+                      </label>
+                    </div>
+                    {errors.terms && (
+                      <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                        {errors.terms?.message}
+                      </p>
+                    )}
                   </div>
                   <button
                     type="submit"
