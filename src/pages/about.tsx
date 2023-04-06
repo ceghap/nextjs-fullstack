@@ -10,7 +10,7 @@ const About = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="mx-auto max-w-3xl ">
+      <main className="format mx-auto max-w-3xl">
         <h1>About me</h1>
         <p>
           Hello there! My name is Ceghap, and I am the dorky programmer behind

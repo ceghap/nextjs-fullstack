@@ -11,8 +11,272 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>Nextjs fullstack!</h1>
-        <h2>Template</h2>
+        {/* hero section */}
+        <section className="bg-gray-900 py-20 text-white">
+          <div className="container mx-auto px-4">
+            <h1 className="mb-8 text-5xl font-bold">
+              Web Design & Development by the Dorky Programmer
+            </h1>
+            <p className="mb-8 text-xl">
+              Transform your online presence with creative, functional, and
+              dorky websites.
+            </p>
+            <a
+              href="#services"
+              className="inline-block rounded-full bg-white py-3 px-6 font-bold text-gray-900 hover:bg-gray-100"
+            >
+              Get Started
+            </a>
+          </div>
+        </section>
+
+        {/* service section */}
+        <section id="services" className="py-20">
+          <div className="container mx-auto px-4">
+            <h2 className="mb-8 text-center text-4xl font-bold">What We Do</h2>
+            <div className="-mx-4 flex flex-wrap">
+              <div className="mb-8 w-full px-4 md:w-1/3">
+                <div className="rounded-lg bg-gray-100 p-8">
+                  <div className="mb-4">
+                    <i className="fas fa-laptop-code text-3xl text-gray-900"></i>
+                  </div>
+                  <h3 className="mb-4 text-2xl font-bold">
+                    Web Design & Development
+                  </h3>
+                  <p className="text-gray-700">
+                    From simple landing pages to complex web applications, we
+                    can create custom solutions that meet your unique needs.
+                  </p>
+                </div>
+              </div>
+              <div className="mb-8 w-full px-4 md:w-1/3">
+                <div className="rounded-lg bg-gray-100 p-8">
+                  <div className="mb-4">
+                    <i className="fas fa-mobile-alt text-3xl text-gray-900"></i>
+                  </div>
+                  <h3 className="mb-4 text-2xl font-bold">
+                    Mobile App Development
+                  </h3>
+                  <p className="text-gray-700">
+                    We can help you design and develop native iOS and Android
+                    apps that engage your audience and drive results.
+                  </p>
+                </div>
+              </div>
+              <div className="mb-8 w-full px-4 md:w-1/3">
+                <div className="rounded-lg bg-gray-100 p-8">
+                  <div className="mb-4">
+                    <i className="fas fa-cog text-3xl text-gray-900"></i>
+                  </div>
+                  <h3 className="mb-4 text-2xl font-bold">
+                    Custom Web Solutions
+                  </h3>
+                  <p className="text-gray-700">
+                    Need something outside the box? We love a good challenge and
+                    can create custom solutions that fit your unique
+                    requirements.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Portfolio section */}
+        <section className="bg-gray-100 py-16">
+          <div className="container mx-auto">
+            <h2 className="mb-8 text-3xl font-bold">Our Portfolio</h2>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+              <div className="overflow-hidden rounded-lg bg-white shadow-md">
+                <img
+                  src="https://via.placeholder.com/500x300"
+                  alt="Portfolio Item"
+                  className="h-48 w-full object-cover"
+                />
+                <div className="px-6 py-4">
+                  <h3 className="mb-2 text-xl font-bold">Project Name</h3>
+                  <p className="mb-4 text-gray-700">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+                    in libero neque. Aenean commodo tortor eu lectus commodo
+                    sollicitudin.
+                  </p>
+                  <a
+                    href="#"
+                    className="rounded-lg bg-gray-800 py-2 px-4 font-bold text-white hover:bg-gray-700"
+                  >
+                    View Project
+                  </a>
+                </div>
+              </div>
+              <div className="overflow-hidden rounded-lg bg-white shadow-md">
+                <img
+                  src="https://via.placeholder.com/500x300"
+                  alt="Portfolio Item"
+                  className="h-48 w-full object-cover"
+                />
+                <div className="px-6 py-4">
+                  <h3 className="mb-2 text-xl font-bold">Project Name</h3>
+                  <p className="mb-4 text-gray-700">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+                    in libero neque. Aenean commodo tortor eu lectus commodo
+                    sollicitudin.
+                  </p>
+                  <a
+                    href="#"
+                    className="rounded-lg bg-gray-800 py-2 px-4 font-bold text-white hover:bg-gray-700"
+                  >
+                    View Project
+                  </a>
+                </div>
+              </div>
+              <div className="overflow-hidden rounded-lg bg-white shadow-md">
+                <img
+                  src="https://via.placeholder.com/500x300"
+                  alt="Portfolio Item"
+                  className="h-48 w-full object-cover"
+                />
+                <div className="px-6 py-4">
+                  <h3 className="mb-2 text-xl font-bold">Project Name</h3>
+                  <p className="mb-4 text-gray-700">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+                    in libero neque. Aenean commodo tortor eu lectus commodo
+                    sollicitudin.
+                  </p>
+                  <a
+                    href="#"
+                    className="rounded-lg bg-gray-800 py-2 px-4 font-bold text-white hover:bg-gray-700"
+                  >
+                    View Project
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Review section */}
+        <section className="py-16">
+          <div className="container mx-auto">
+            <h2 className="mb-8 text-3xl font-bold">What Our Clients Say</h2>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div className="rounded-lg bg-gray-200 py-8 px-6">
+                <blockquote className="mb-4 text-lg">
+                  "Working with the team at My Website was a fantastic
+                  experience. They were able to take my vision and turn it into
+                  a reality, all while keeping me in the loop every step of the
+                  way."
+                </blockquote>
+                <cite className="font-bold">- John Doe, CEO</cite>
+              </div>
+              <div className="rounded-lg bg-gray-200 py-8 px-6">
+                <blockquote className="mb-4 text-lg">
+                  "I was blown away by the quality of work that My Website
+                  delivered. They truly went above and beyond to make sure that
+                  everything was perfect. I would highly recommend them to
+                  anyone looking for a top-notch website."
+                </blockquote>
+                <cite className="font-bold">
+                  - Jane Smith, Marketing Director
+                </cite>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Tech used section */}
+        <section className="bg-gray-100 py-16">
+          <div className="container mx-auto">
+            <h2 className="mb-8 text-3xl font-bold">Technology Stack</h2>
+            <p className="mb-8 text-lg">
+              We leverage a wide range of technologies to build high-quality
+              websites and web applications. Here are some of the technologies
+              we specialize in:
+            </p>
+            <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+              <div className="mb-4 flex items-center">
+                <img
+                  className="mr-4 h-10 w-10"
+                  src="https://via.placeholder.com/50x50"
+                  alt="Next.js logo"
+                />
+                <span className="font-medium">Next.js</span>
+              </div>
+              <div className="mb-4 flex items-center">
+                <img
+                  className="mr-4 h-10 w-10"
+                  src="https://via.placeholder.com/50x50"
+                  alt="Tailwindcss logo"
+                />
+                <span className="font-medium">TailwindCss</span>
+              </div>
+              <div className="mb-4 flex items-center">
+                <img
+                  className="mr-4 h-10 w-10"
+                  src="https://via.placeholder.com/50x50"
+                  alt="Prisma logo"
+                />
+                <span className="font-medium">Prisma</span>
+              </div>
+              <div className="mb-4 flex items-center">
+                <img
+                  className="mr-4 h-10 w-10"
+                  src="https://via.placeholder.com/50x50"
+                  alt="PostgreSQL logo"
+                />
+                <span className="font-medium">PostgreSQL</span>
+              </div>
+              <div className="mb-4 flex items-center">
+                <img
+                  className="mr-4 h-10 w-10"
+                  src="https://via.placeholder.com/50x50"
+                  alt="Supabase logo"
+                />
+                <span className="font-medium">Supabase</span>
+              </div>
+              <div className="mb-4 flex items-center">
+                <img
+                  className="mr-4 h-10 w-10"
+                  src="https://via.placeholder.com/50x50"
+                  alt="NestJS logo"
+                />
+                <span className="font-medium">NestJS</span>
+              </div>
+              <div className="mb-4 flex items-center">
+                <img
+                  className="mr-4 h-10 w-10"
+                  src="https://via.placeholder.com/50x50"
+                  alt="React native logo"
+                />
+                <span className="font-medium">React Native</span>
+              </div>
+              <div className="mb-4 flex items-center">
+                <img
+                  className="mr-4 h-10 w-10"
+                  src="https://via.placeholder.com/50x50"
+                  alt="Ionic logo"
+                />
+                <span className="font-medium">Ionic</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="bg-gray-100 py-16">
+          <div className="container mx-auto">
+            <h2 className="mb-8 text-3xl font-bold">Ready to Get Started?</h2>
+            <p className="mb-8 text-lg">
+              We&apos;d love to hear about your project and see how we can help.
+              Contact us today to schedule a consultation.
+            </p>
+            <a
+              href="#"
+              className="rounded-lg bg-gray-800 py-2 px-4 font-bold text-white hover:bg-gray-700"
+            >
+              Contact Us
+            </a>
+          </div>
+        </section>
       </main>
     </PublicLayout>
   );
