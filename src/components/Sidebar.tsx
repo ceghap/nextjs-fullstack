@@ -1,4 +1,4 @@
-import React from "react";
+import { signOut } from "next-auth/react";
 
 const Sidebar = () => {
   return (
@@ -300,6 +300,9 @@ const Sidebar = () => {
               </svg>
               <span className="ml-3">Help</span>
             </a>
+          </li>
+          <li>
+            <button onClick={() => signOut()}>Sign Out</button>
           </li>
         </ul>
       </div>

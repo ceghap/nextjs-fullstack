@@ -1,8 +1,6 @@
-import React from "react";
-
 const Footer = () => {
   return (
-    <footer className="absolute bottom-0 left-0 right-0 border-t bg-white p-4 dark:bg-gray-800 md:p-8 lg:p-10">
+    <footer className="relative bottom-0 left-0 right-0 border-t bg-white p-4 dark:bg-gray-800 md:p-8 lg:p-10">
       <div className="mx-auto max-w-screen-xl text-center">
         <a
           href="#"
