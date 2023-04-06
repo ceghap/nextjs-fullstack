@@ -41,8 +41,8 @@ const TermsAndConditions = () => {
           </ol>
           <p>
             If you have any questions or concerns about these terms, please
-            don't hesitate to contact us. Thanks for choosing us, and we look
-            forward to working with you!
+            don&apos;t hesitate to contact us. Thanks for choosing us, and we
+            look forward to working with you!
           </p>
         </div>
       </div>
