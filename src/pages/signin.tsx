@@ -56,7 +56,6 @@ export default function Signin() {
   });
 
   const onSubmit = handleSubmit(async ({ haspassword, password, email }) => {
-    console.log({ haspassword, password, email });
     if (haspassword) {
       console.log(email);
       console.log(password);
@@ -67,8 +66,6 @@ export default function Signin() {
       });
     }
   });
-
-  console.log("isSubmitting", isSubmitting);
 
   return (
     <PublicLayout>
