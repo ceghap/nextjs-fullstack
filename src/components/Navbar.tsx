@@ -2,7 +2,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 const Navbar = () => {
   const router = useRouter();
-  console.log(router);
 
   return (
     <nav className="rounded border-b border-gray-200 bg-white px-2 py-2.5 dark:bg-gray-900 sm:px-4">

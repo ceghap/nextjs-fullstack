@@ -7,14 +7,38 @@ import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { z } from "zod";
 
-const loginSchema = z.object({
-  email: z.string().min(1, { message: "Email is required" }).email({
-    message: "Must be a valid email",
-  }),
-  password: z
-    .string()
-    .min(6, { message: "Password must be atleast 6 characters" }),
-});
+const loginSchema = z
+  .object({
+    email: z.string().min(1, { message: "Email is required" }).email({
+      message: "Must be a valid email",
+    }),
+    password: z.string().optional(),
+    haspassword: z.boolean().default(true),
+  })
+  .refine(
+    ({ haspassword, password }) => {
+      if (haspassword && !password) {
+        return false;
+      }
+      return true;
+    },
+    {
+      path: ["password"],
+      message: "Password is required",
+    }
+  )
+  .refine(
+    ({ haspassword, password }) => {
+      if (haspassword && password && password.length < 6) {
+        return false;
+      }
+      return true;
+    },
+    {
+      path: ["password"],
+      message: "Password must be at least 6 characters",
+    }
+  );
 
 // extracting the type
 type Login = z.infer<typeof loginSchema>;
@@ -24,9 +48,10 @@ export default function Signin() {
     register,
     setValue,
     handleSubmit,
+    watch,
     formState: { errors, isSubmitting, isDirty, isValid },
   } = useForm<Login>({
-    mode: "onBlur",
+    mode: "onChange",
     resolver: zodResolver(loginSchema),
   });
 
@@ -49,8 +74,8 @@ export default function Signin() {
                   Sign in to your account
                 </h1>
 
-                <form onSubmit={onSubmit}>
-                  <div className="mb-6">
+                <form onSubmit={onSubmit} className="flex flex-col">
+                  <div className="mb-2">
                     <label
                       htmlFor="email"
                       className={`mb-2 block text-sm font-medium ${
@@ -79,42 +104,68 @@ export default function Signin() {
                       </p>
                     )}
                   </div>
-                  <div className="mb-6">
-                    <label
-                      htmlFor="password"
-                      className={`mb-2 block text-sm font-medium ${
-                        errors.password
-                          ? "text-red-500 dark:text-red-600"
-                          : "text-gray-900 dark:text-white"
-                      }`}
-                    >
-                      Password
-                    </label>
-                    <input
-                      type="password"
-                      id="password"
-                      className={`block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 ${
-                        errors.password
-                          ? "focus:border-red-500 focus:ring-red-500 dark:focus:border-red-500 dark:focus:ring-red-500"
-                          : "focus:border-blue-500 focus:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                      }  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 `}
-                      placeholder="•••••••••"
-                      required
-                      {...register("password")}
-                    />
-                    {errors.password && (
-                      <p className="mt-2 text-sm text-red-600 dark:text-red-500">
-                        {errors.password?.message}
-                      </p>
-                    )}
+
+                  {watch("haspassword") && (
+                    <div className="mb-6">
+                      <label
+                        htmlFor="password"
+                        className={`mb-2 block text-sm font-medium ${
+                          errors.password
+                            ? "text-red-500 dark:text-red-600"
+                            : "text-gray-900 dark:text-white"
+                        }`}
+                      >
+                        Password
+                      </label>
+                      <input
+                        type="password"
+                        id="password"
+                        className={`block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 ${
+                          errors.password
+                            ? "focus:border-red-500 focus:ring-red-500 dark:focus:border-red-500 dark:focus:ring-red-500"
+                            : "focus:border-blue-500 focus:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                        }  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 `}
+                        placeholder="•••••••••"
+                        required
+                        {...register("password")}
+                      />
+                    </div>
+                  )}
+
+                  {errors.password && (
+                    <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                      {errors.password?.message}
+                    </p>
+                  )}
+
+                  <div className="mb-6 ">
+                    <div className="flex items-start">
+                      <div className="flex h-5 items-center">
+                        <input
+                          id="isnotpasswordless"
+                          type="checkbox"
+                          value=""
+                          className="focus:ring-3 h-4 w-4 rounded border border-gray-300 bg-gray-50 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
+                          required
+                          checked={watch("haspassword")}
+                          {...register("haspassword")}
+                        />
+                      </div>
+                      <label
+                        htmlFor="isnotpasswordless"
+                        className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        I have password
+                      </label>
+                    </div>
                   </div>
 
                   <button
                     disabled={!isDirty || !isValid || isSubmitting}
                     type="submit"
-                    className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 disabled:opacity-75 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
+                    className="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 disabled:opacity-75 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
                   >
-                    Sign in
+                    Send the magic link
                   </button>
                 </form>
 

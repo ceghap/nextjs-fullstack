@@ -37,6 +37,6 @@ You can use whatever database [supported by prisma](https://www.prisma.io/docs/r
 - Role based authorization
   - Authenticated: Admin, User
   - Unauthenticated: Guess
-- Credentials authentication (email & password)
-- Passwordless authentication (login by email link)
+- ~~Credentials authentication (email & password)~~ Cancelled as I am too lazy to setup backend for this. Use passwordless instead
+- Passwordless authentication (login by magic link)
 - Oauth authentication (Google)
