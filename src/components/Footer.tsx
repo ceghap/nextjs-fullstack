@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ImGithub } from "react-icons/im";
 
 const Footer = () => {
   return (
@@ -13,7 +14,7 @@ const Footer = () => {
         <p className="my-6 text-gray-500 dark:text-gray-400">
           Just another nextjs fullstack template.
         </p>
-        <ul className="mb-6 flex flex-wrap items-center justify-center text-gray-900 dark:text-white">
+        <ul className="mb-3 flex flex-wrap items-center justify-center text-gray-900 dark:text-white">
           <li>
             <Link href="/about" className="mr-4 hover:underline md:mr-6 ">
               About
@@ -25,6 +26,14 @@ const Footer = () => {
             </Link>
           </li>
         </ul>
+        <div className="mb-3 flex justify-center space-x-2">
+          <Link
+            href="https://github.com/ceghap/nextjs-fullstack"
+            className="text-xl text-gray-500"
+          >
+            <ImGithub />
+          </Link>
+        </div>
         <span className="text-sm text-gray-500 dark:text-gray-400 sm:text-center">
           © 2022-2023{" "}
           <a href="#" className="hover:underline">
