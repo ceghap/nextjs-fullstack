@@ -1,3 +1,4 @@
+import Spinner from "@/components/Spinner";
 import PublicLayout from "@/components/layouts/PublicLayout";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
@@ -54,7 +55,20 @@ export default function Signin() {
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const onSubmit = handleSubmit(async ({ haspassword, password, email }) => {
+    console.log({ haspassword, password, email });
+    if (haspassword) {
+      console.log(email);
+      console.log(password);
+    } else {
+      await signIn("email", {
+        email,
+        callbackUrl: "/protected",
+      });
+    }
+  });
+
+  console.log("isSubmitting", isSubmitting);
 
   return (
     <PublicLayout>
@@ -64,6 +78,8 @@ export default function Signin() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      {isSubmitting && <Spinner />}
+
       <main className="flex w-screen justify-center p-4">
         <section className="w-full dark:bg-gray-900">
           <div className="mx-auto flex h-full flex-col items-center justify-center px-6 py-8 lg:py-0">
@@ -145,8 +161,6 @@ export default function Signin() {
                           type="checkbox"
                           value=""
                           className="focus:ring-3 h-4 w-4 rounded border border-gray-300 bg-gray-50 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
-                          required
-                          checked={watch("haspassword")}
                           {...register("haspassword")}
                         />
                       </div>
@@ -160,13 +174,6 @@ export default function Signin() {
                   </div>
 
                   <button
-                    onClick={() => {
-                      if (watch("haspassword")) {
-                        // login with password
-                      } else {
-                        signIn("email", { callbackUrl: "/protected" });
-                      }
-                    }}
                     disabled={!isDirty || !isValid || isSubmitting}
                     type="submit"
                     className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 disabled:opacity-75 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
