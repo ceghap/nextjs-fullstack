@@ -141,13 +141,12 @@ export default function Signin() {
                         required
                         {...register("password")}
                       />
+                      {errors.password && (
+                        <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                          {errors.password?.message}
+                        </p>
+                      )}
                     </div>
-                  )}
-
-                  {errors.password && (
-                    <p className="mt-2 text-sm text-red-600 dark:text-red-500">
-                      {errors.password?.message}
-                    </p>
                   )}
 
                   <div className="mb-6 ">
