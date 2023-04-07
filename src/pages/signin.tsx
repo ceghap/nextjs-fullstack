@@ -46,7 +46,6 @@ type Login = z.infer<typeof loginSchema>;
 export default function Signin() {
   const {
     register,
-    setValue,
     handleSubmit,
     watch,
     formState: { errors, isSubmitting, isDirty, isValid },
@@ -161,11 +160,18 @@ export default function Signin() {
                   </div>
 
                   <button
+                    onClick={() => {
+                      if (watch("haspassword")) {
+                        // login with password
+                      } else {
+                        signIn("email", { callbackUrl: "/protected" });
+                      }
+                    }}
                     disabled={!isDirty || !isValid || isSubmitting}
                     type="submit"
-                    className="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 disabled:opacity-75 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
+                    className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 disabled:opacity-75 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
                   >
-                    Send the magic link
+                    {watch("haspassword") ? "Sign in" : "Send the magic link"}
                   </button>
                 </form>
 
