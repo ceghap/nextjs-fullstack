@@ -4,6 +4,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import EmailProvider from "next-auth/providers/email";
 import GoogleProvider from "next-auth/providers/google";
+import { nodemailerServer } from "src/utils/constant";
 
 const prisma = new PrismaClient();
 
@@ -15,14 +16,7 @@ export default NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
     EmailProvider({
-      server: {
-        host: process.env.EMAIL_SERVER_HOST,
-        port: process.env.EMAIL_SERVER_PORT,
-        auth: {
-          user: process.env.EMAIL_SERVER_USER,
-          pass: process.env.EMAIL_SERVER_PASSWORD,
-        },
-      },
+      server: nodemailerServer,
       from: process.env.EMAIL_FROM,
       // maxAge: 24 * 60 * 60, // How long email links are valid for (default 24h)
       // Normalizing the email address
@@ -60,25 +54,43 @@ export default NextAuth({
       async authorize(credentials, req) {
         const { email, password } = credentials as any;
 
-        const res = await fetch("/api/signin", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email,
-            password,
-          }),
-        });
+        try {
+          const res = await fetch(`${process.env.NEXTAUTH_URL}/api/signin`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email,
+              password,
+            }),
+          });
 
-        const user = await res.json();
+          const user = await res.json();
 
-        if (res.ok && user) {
-          return user;
-        } else {
-          return null;
+          if (res.ok && user) {
+            return user;
+          } else {
+            return null;
+          }
+        } catch (error) {
+          throw new Error("SERVER_ERROR");
         }
       },
     }),
   ],
+  session: {
+    strategy: "jwt",
+  },
+  callbacks: {
+    async jwt({ token }) {
+      return token;
+    },
+    async session({ session }) {
+      return session;
+    },
+  },
+  pages: {
+    signIn: "/signin",
+  },
 });

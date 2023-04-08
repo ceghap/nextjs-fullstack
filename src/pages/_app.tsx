@@ -1,7 +1,11 @@
 import "@/styles/globals.css";
-import type { AppProps } from "next/app";
 import { Inter } from "@next/font/google";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { SessionProvider } from "next-auth/react";
+import type { AppProps } from "next/app";
+
+const queryClient = new QueryClient();
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +22,10 @@ export default function App({
       `}</style>
 
       <SessionProvider session={session}>
-        <Component {...pageProps} />
+        <QueryClientProvider client={queryClient}>
+          <Component {...pageProps} />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
       </SessionProvider>
     </>
   );

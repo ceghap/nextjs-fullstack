@@ -57,8 +57,11 @@ export default function Signin() {
 
   const onSubmit = handleSubmit(async ({ haspassword, password, email }) => {
     if (haspassword) {
-      console.log(email);
-      console.log(password);
+      await signIn("credentials", {
+        email,
+        password,
+        callbackUrl: "/protected",
+      });
     } else {
       await signIn("email", {
         email,

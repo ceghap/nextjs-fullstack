@@ -1,6 +1,7 @@
 import Spinner from "@/components/Spinner";
 import PublicLayout from "@/components/layouts/PublicLayout";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 import { signIn } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
@@ -61,7 +62,36 @@ const registerSchema = z
 
 type Register = z.infer<typeof registerSchema>;
 
+const createAccount = async ({
+  email,
+  password,
+}: {
+  email: string;
+  password: string;
+}) => {
+  const res = await fetch("/api/signup", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+  });
+};
+
 export default function Signup() {
+  const { mutate, isLoading } = useMutation({
+    mutationFn: createAccount,
+    onSuccess() {
+      alert("success");
+    },
+    onError() {
+      alert("error");
+    },
+  });
+
   const {
     register,
     handleSubmit,
@@ -74,8 +104,9 @@ export default function Signup() {
 
   const onSubmit = handleSubmit(async ({ haspassword, password, email }) => {
     if (haspassword) {
-      console.log(email);
-      console.log(password);
+      if (email && password) {
+        mutate({ email, password });
+      }
     } else {
       await signIn("email", {
         email,
@@ -92,7 +123,7 @@ export default function Signup() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {isSubmitting && <Spinner />}
+      {(isSubmitting || isLoading) && <Spinner />}
 
       <main className="flex justify-center p-4">
         <section className="w-full dark:bg-gray-900">

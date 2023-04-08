@@ -28,7 +28,6 @@ export default async function handler(
     const hashedPassword = await argon2.hash(password);
 
     // insert new user
-
     const newUser = await prisma.user.create({
       data: {
         email,
