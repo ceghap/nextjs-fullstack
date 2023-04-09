@@ -9,7 +9,6 @@ export default withAuth(
         req.nextauth.token?.user?.role !== "ADMIN" &&
         req.nextauth.token?.user?.role === "USER"
       ) {
-        console.log(1);
         return NextResponse.redirect(new URL("/protected", req.url));
       }
 
@@ -18,17 +17,14 @@ export default withAuth(
         req.nextauth.token?.user?.role !== "USER" &&
         req.nextauth.token?.user?.role === "ADMIN"
       ) {
-        console.log(2);
         return NextResponse.redirect(new URL("/manage", req.url));
       }
 
       if (req.nextauth.token?.user?.role === "ADMIN") {
-        console.log(3);
         return NextResponse.rewrite(new URL("/manage", req.url));
       }
 
       if (req.nextauth.token?.user?.role === "USER") {
-        console.log(4);
         return NextResponse.rewrite(new URL("/protected", req.url));
       }
 
