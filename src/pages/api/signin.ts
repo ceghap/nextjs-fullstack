@@ -1,11 +1,11 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { User } from "@prisma/client";
 import argon2 from "argon2";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../prisma/client";
-
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse<Omit<User, "password"> | { message: string }>
 ) {
   if (req.method === "POST") {
     const { email, password } = req.body;
@@ -30,9 +30,14 @@ export default async function handler(
 
     try {
       if (await argon2.verify(user?.password!, password)) {
-        return res
-          .status(200)
-          .json({ id: user?.id, email: user?.email, role: user?.role });
+        return res.status(200).json({
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          emailVerified: user.emailVerified,
+          image: user.image,
+          role: user.role,
+        });
       } else {
         return res.status(401).json({ message: "Invalid credentials" });
       }

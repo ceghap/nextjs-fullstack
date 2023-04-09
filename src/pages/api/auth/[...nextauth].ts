@@ -83,14 +83,29 @@ export default NextAuth({
     strategy: "jwt",
   },
   callbacks: {
-    async jwt({ token }) {
+    async jwt({ token, user }) {
+      if (user) {
+        token.user = {
+          id: user?.id,
+          name: user?.name,
+          email: user?.email,
+          emailVerified: user?.emailVerified,
+          image: user?.image,
+          role: user?.role,
+        };
+      }
+
       return token;
     },
-    async session({ session }) {
+    async session({ session, token }) {
+      if (token) {
+        session.user = token.user;
+      }
       return session;
     },
   },
   pages: {
     signIn: "/signin",
   },
+  secret: process.env.NEXTAUTH_SECRET,
 });
