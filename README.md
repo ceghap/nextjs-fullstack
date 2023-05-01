@@ -10,10 +10,8 @@ Just a template containing couple of packages for me to get started faster
 - nextauth
 - React hook form
 - Zod
-
-### Will add
-
-- react query
+- React toastify
+- React Query
 
 ## Getting started
 
