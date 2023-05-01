@@ -1,7 +1,10 @@
 import PublicLayout from "@/components/layouts/PublicLayout";
 import Head from "next/head";
+import { toast } from "react-toastify";
 
 export default function Home() {
+  const notify = () => toast("Wow so easy !");
+
   return (
     <PublicLayout>
       <Head>
@@ -11,278 +14,129 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        {/* hero section */}
-        <section className="bg-gray-900 py-20 text-white">
-          <div className="container mx-auto px-4">
-            <h1 className="mb-8 text-5xl font-bold">
-              Web Design & Development by the Dorky Programmer
-            </h1>
-            <p className="mb-8 text-xl">
-              Transform your online presence with creative, functional, and
-              dorky websites.
-            </p>
-            <a
-              href="#services"
-              className="inline-block rounded-full bg-white py-3 px-6 font-bold text-gray-900 hover:bg-gray-100"
-            >
-              Get Started
-            </a>
-          </div>
-        </section>
-
-        {/* service section */}
-        <section id="services" className="py-20">
-          <div className="container mx-auto px-4">
-            <h2 className="mb-8 text-center text-4xl font-bold">What We Do</h2>
-            <div className="-mx-4 flex flex-wrap">
-              <div className="mb-8 w-full px-4 md:w-1/3">
-                <div className="rounded-lg bg-gray-100 p-8">
-                  <div className="mb-4">
-                    <i className="fas fa-laptop-code text-3xl text-gray-900"></i>
-                  </div>
-                  <h3 className="mb-4 text-2xl font-bold">
-                    Web Design & Development
-                  </h3>
-                  <p className="text-gray-700">
-                    From simple landing pages to complex web applications, we
-                    can create custom solutions that meet your unique needs.
-                  </p>
-                </div>
-              </div>
-              <div className="mb-8 w-full px-4 md:w-1/3">
-                <div className="rounded-lg bg-gray-100 p-8">
-                  <div className="mb-4">
-                    <i className="fas fa-mobile-alt text-3xl text-gray-900"></i>
-                  </div>
-                  <h3 className="mb-4 text-2xl font-bold">
-                    Mobile App Development
-                  </h3>
-                  <p className="text-gray-700">
-                    We can help you design and develop native iOS and Android
-                    apps that engage your audience and drive results.
-                  </p>
-                </div>
-              </div>
-              <div className="mb-8 w-full px-4 md:w-1/3">
-                <div className="rounded-lg bg-gray-100 p-8">
-                  <div className="mb-4">
-                    <i className="fas fa-cog text-3xl text-gray-900"></i>
-                  </div>
-                  <h3 className="mb-4 text-2xl font-bold">
-                    Custom Web Solutions
-                  </h3>
-                  <p className="text-gray-700">
-                    Need something outside the box? We love a good challenge and
-                    can create custom solutions that fit your unique
-                    requirements.
-                  </p>
-                </div>
+        <div className="min-h-screen bg-gray-100">
+          <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+            <div className="lg:grid lg:grid-cols-2 lg:gap-8">
+              <div>
+                <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                  Nextjs fullstack template
+                </h2>
+                <p className="mt-4 text-lg text-gray-500">
+                  Just a template containing couple of packages for me to get
+                  started faster.
+                </p>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Portfolio section */}
-        <section className="bg-gray-100 py-16 px-4">
-          <div className="container mx-auto">
-            <h2 className="mb-8 text-center text-4xl font-bold">
-              Our Portfolio
-            </h2>
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-              <div className="overflow-hidden rounded-lg bg-white shadow-md">
-                <img
-                  src="https://via.placeholder.com/500x300"
-                  alt="Portfolio Item"
-                  className="h-48 w-full object-cover"
-                />
-                <div className="px-6 py-4">
-                  <h3 className="mb-2 text-xl font-bold">Project Name</h3>
-                  <p className="mb-4 text-gray-700">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                    in libero neque. Aenean commodo tortor eu lectus commodo
-                    sollicitudin.
-                  </p>
+            <div className="mt-10">
+              <dl className="space-y-10">
+                <div>
+                  <dt className="text-lg font-medium leading-6 text-gray-900">
+                    Stack
+                  </dt>
+                  <dd className="mt-2 text-base text-gray-500">
+                    <ul className="list-disc pl-5">
+                      <li>Nextjs</li>
+                      <li>tailwindcss</li>
+                      <li>prisma (I use supabase as db hosting)</li>
+                      <li>nextauth</li>
+                      <li>React hook form</li>
+                      <li>Zod</li>
+                      <li>React Query</li>
+                      <li>React Toastify</li>
+                    </ul>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+            <div className="mt-10">
+              <h3 className="text-lg font-medium leading-6 text-gray-900">
+                Getting started
+              </h3>
+              <div className="mt-4 text-base text-gray-500">
+                <ol className="list-decimal pl-5">
+                  <li>Install dependencies `yarn install`</li>
+                  <li>
+                    Create `.env` file so that prisma can read the environment
+                    variable. Not sure why it cannot read `.env.local` so we
+                    will live with this for now.
+                  </li>
+                  <li>Update `.env` with content of `env.example` file</li>
+                  <li>
+                    Run prisma migrate to populate tabels in your db based on
+                    schema.prisma `npx prisma migrate dev --name init`
+                  </li>
+                  <li>
+                    You can check your database that it now contains couple of
+                    tables
+                  </li>
+                  <li>
+                    Run `npx prisma generate` to generate prisma client, so that
+                    you can query prisma orm
+                  </li>
+                </ol>
+                <p className="mt-4">
+                  You can use whatever database{" "}
                   <a
-                    href="#"
-                    className="rounded-lg bg-gray-800 py-2 px-4 font-bold text-white hover:bg-gray-700"
+                    href="https://www.prisma.io/docs/reference/database-reference/supported-databases"
+                    className="text-blue-500 hover:underline"
                   >
-                    View Project
+                    supported by prisma
                   </a>
-                </div>
-              </div>
-              <div className="overflow-hidden rounded-lg bg-white shadow-md">
-                <img
-                  src="https://via.placeholder.com/500x300"
-                  alt="Portfolio Item"
-                  className="h-48 w-full object-cover"
-                />
-                <div className="px-6 py-4">
-                  <h3 className="mb-2 text-xl font-bold">Project Name</h3>
-                  <p className="mb-4 text-gray-700">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                    in libero neque. Aenean commodo tortor eu lectus commodo
-                    sollicitudin.
-                  </p>
+                  . Just edit the schema.prisma to integrate with your db. Refer
+                  here{" "}
                   <a
-                    href="#"
-                    className="rounded-lg bg-gray-800 py-2 px-4 font-bold text-white hover:bg-gray-700"
+                    href="https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference"
+                    className="text-blue-500 hover:underline"
                   >
-                    View Project
+                    Prisma schema reference
                   </a>
-                </div>
-              </div>
-              <div className="overflow-hidden rounded-lg bg-white shadow-md">
-                <img
-                  src="https://via.placeholder.com/500x300"
-                  alt="Portfolio Item"
-                  className="h-48 w-full object-cover"
-                />
-                <div className="px-6 py-4">
-                  <h3 className="mb-2 text-xl font-bold">Project Name</h3>
-                  <p className="mb-4 text-gray-700">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                    in libero neque. Aenean commodo tortor eu lectus commodo
-                    sollicitudin.
-                  </p>
-                  <a
-                    href="#"
-                    className="rounded-lg bg-gray-800 py-2 px-4 font-bold text-white hover:bg-gray-700"
-                  >
-                    View Project
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Review section */}
-        <section className="py-16 px-4">
-          <div className="container mx-auto">
-            <h2 className="mb-8 text-center text-4xl font-bold">
-              What Our Clients Say
-            </h2>
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              <div className="rounded-lg bg-gray-200 py-8 px-6">
-                <blockquote className="mb-4 text-lg">
-                  &quot;Working with the team at My Website was a fantastic
-                  experience. They were able to take my vision and turn it into
-                  a reality, all while keeping me in the loop every step of the
-                  way.&quot;
-                </blockquote>
-                <cite className="font-bold">- John Doe, CEO</cite>
-              </div>
-              <div className="rounded-lg bg-gray-200 py-8 px-6">
-                <blockquote className="mb-4 text-lg">
-                  &quot;I was blown away by the quality of work that My Website
-                  delivered. They truly went above and beyond to make sure that
-                  everything was perfect. I would highly recommend them to
-                  anyone looking for a top-notch website.&quot;
-                </blockquote>
-                <cite className="font-bold">
-                  - Jane Smith, Marketing Director
-                </cite>
+                  .
+                </p>
+                <h4 className="mt-6 text-lg font-medium leading-6 text-gray-900">
+                  Prisma notes
+                </h4>
+                <ol className="list-decimal pl-5">
+                  <li>
+                    Set the DATABASE_URL in the .env file to point to your
+                    existing database. If your database has no tables yet, read{" "}
+                    <a
+                      href="https://pris.ly/d/getting-started"
+                      className="text-blue-500 hover:underline"
+                    >
+                      https://pris.ly/d/getting-started
+                    </a>
+                    .
+                  </li>
+                  <li>
+                    Run prisma db pull to turn your database schema into a
+                    Prisma schema.
+                  </li>
+                  <li>
+                    Run prisma generate to generate the Prisma Client. You can
+                    then start querying your database.
+                  </li>
+                </ol>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Tech used section */}
-        <section className="bg-gray-100 py-16 px-4">
-          <div className="container mx-auto">
-            <h2 className="mb-8 text-center text-4xl font-bold">
-              Technology Stack
-            </h2>
-            <p className="mb-8 text-center text-lg">
-              We leverage a wide range of technologies to build high-quality
-              websites and web applications. Here are some of the technologies
-              we specialize in:
-            </p>
-            <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-              <div className="mb-4 flex items-center">
-                <img
-                  className="mr-4 h-10 w-10"
-                  src="https://via.placeholder.com/50x50"
-                  alt="Next.js logo"
-                />
-                <span className="font-medium">Next.js</span>
-              </div>
-              <div className="mb-4 flex items-center">
-                <img
-                  className="mr-4 h-10 w-10"
-                  src="https://via.placeholder.com/50x50"
-                  alt="Tailwindcss logo"
-                />
-                <span className="font-medium">TailwindCss</span>
-              </div>
-              <div className="mb-4 flex items-center">
-                <img
-                  className="mr-4 h-10 w-10"
-                  src="https://via.placeholder.com/50x50"
-                  alt="Prisma logo"
-                />
-                <span className="font-medium">Prisma</span>
-              </div>
-              <div className="mb-4 flex items-center">
-                <img
-                  className="mr-4 h-10 w-10"
-                  src="https://via.placeholder.com/50x50"
-                  alt="PostgreSQL logo"
-                />
-                <span className="font-medium">PostgreSQL</span>
-              </div>
-              <div className="mb-4 flex items-center">
-                <img
-                  className="mr-4 h-10 w-10"
-                  src="https://via.placeholder.com/50x50"
-                  alt="Supabase logo"
-                />
-                <span className="font-medium">Supabase</span>
-              </div>
-              <div className="mb-4 flex items-center">
-                <img
-                  className="mr-4 h-10 w-10"
-                  src="https://via.placeholder.com/50x50"
-                  alt="NestJS logo"
-                />
-                <span className="font-medium">NestJS</span>
-              </div>
-              <div className="mb-4 flex items-center">
-                <img
-                  className="mr-4 h-10 w-10"
-                  src="https://via.placeholder.com/50x50"
-                  alt="React native logo"
-                />
-                <span className="font-medium">React Native</span>
-              </div>
-              <div className="mb-4 flex items-center">
-                <img
-                  className="mr-4 h-10 w-10"
-                  src="https://via.placeholder.com/50x50"
-                  alt="Ionic logo"
-                />
-                <span className="font-medium">Ionic</span>
-              </div>
+            <div className="mt-10">
+              <h3 className="text-lg font-medium leading-6 text-gray-900">
+                Features
+              </h3>
+              <ul className="mt-4 list-disc pl-5 text-base text-gray-500">
+                <li>
+                  Role based authorization
+                  <ul className="ml-4 text-gray-400">
+                    <li>Authenticated: Admin, User</li>
+                    <li>Unauthenticated: Guess</li>
+                  </ul>
+                </li>
+                <li>Passwordless authentication (login by magic link)</li>
+                <li>Oauth authentication (Google)</li>
+                <li>Credentials authentication (email & password)</li>
+              </ul>
             </div>
           </div>
-        </section>
-
-        {/* CTA */}
-        <section className="bg-gray-100 py-16 px-4">
-          <div className="container mx-auto text-center">
-            <h2 className="mb-8 text-4xl font-bold">Ready to Get Started?</h2>
-            <p className="mb-8 text-lg">
-              We&apos;d love to hear about your project and see how we can help.
-              Contact us today to schedule a consultation.
-            </p>
-            <a
-              href="#"
-              className="rounded-lg bg-gray-800 py-2 px-4 font-bold text-white hover:bg-gray-700"
-            >
-              Contact Us
-            </a>
-          </div>
-        </section>
+        </div>
       </main>
     </PublicLayout>
   );

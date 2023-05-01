@@ -39,4 +39,4 @@ You can use whatever database [supported by prisma](https://www.prisma.io/docs/r
   - Unauthenticated: Guess
 - Passwordless authentication (login by magic link)
 - Oauth authentication (Google)
-- Credentials authentication (email & password) (in the future. decided to put this on hold as I am lazy to setup the backend)
+- Credentials authentication (email & password)
