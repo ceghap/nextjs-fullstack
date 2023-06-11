@@ -7,6 +7,8 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { z } from "zod";
+import { Input } from "../components/ui/input";
+import { Label } from "@radix-ui/react-label";
 
 const loginSchema = z
   .object({
@@ -91,7 +93,7 @@ export default function Signin() {
 
                 <form onSubmit={onSubmit} className="flex flex-col">
                   <div className="mb-2">
-                    <label
+                    <Label
                       htmlFor="email"
                       className={`mb-2 block text-sm font-medium ${
                         errors.email
@@ -100,8 +102,8 @@ export default function Signin() {
                       }`}
                     >
                       Email address
-                    </label>
-                    <input
+                    </Label>
+                    <Input
                       type="email"
                       id="email"
                       className={`block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 ${
@@ -122,7 +124,7 @@ export default function Signin() {
 
                   {watch("haspassword") && (
                     <div className="mb-6">
-                      <label
+                      <Label
                         htmlFor="password"
                         className={`mb-2 block text-sm font-medium ${
                           errors.password
@@ -131,8 +133,8 @@ export default function Signin() {
                         }`}
                       >
                         Password
-                      </label>
-                      <input
+                      </Label>
+                      <Input
                         type="password"
                         id="password"
                         className={`block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 ${
@@ -163,12 +165,12 @@ export default function Signin() {
                           {...register("haspassword")}
                         />
                       </div>
-                      <label
+                      <Label
                         htmlFor="isnotpasswordless"
                         className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                       >
                         I have password
-                      </label>
+                      </Label>
                     </div>
                   </div>
 
@@ -181,7 +183,7 @@ export default function Signin() {
                   </button>
                 </form>
 
-                <label className="mt-4 text-center text-sm font-medium text-gray-900 dark:text-gray-300">
+                <Label className="mt-4 text-center text-sm font-medium text-gray-900 dark:text-gray-300">
                   Dont have an account?{" "}
                   <Link
                     href="/signup"
@@ -190,7 +192,7 @@ export default function Signin() {
                     Sign up
                   </Link>
                   .
-                </label>
+                </Label>
 
                 <hr />
 
