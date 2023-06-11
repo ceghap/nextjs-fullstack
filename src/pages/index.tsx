@@ -1,9 +1,9 @@
 import PublicLayout from "@/components/layouts/PublicLayout";
 import Head from "next/head";
-import { toast } from "react-toastify";
+import { Button } from "@/components/ui/button"
 
 export default function Home() {
-  const notify = () => toast("Wow so easy !");
+
 
   return (
     <PublicLayout>
@@ -25,6 +25,7 @@ export default function Home() {
                   Just a template containing couple of packages for me to get
                   started faster.
                 </p>
+                <Button variant="outline">Buttons</Button>
               </div>
             </div>
             <div className="mt-10">
