@@ -15,7 +15,7 @@ const SidebarItem = ({
         <span className="text-2xl text-gray-400 group-hover:text-gray-900">
           {icon}
         </span>
-        <span className="ml-3">{name}</span>
+        <span className="ml-3 dark:text-white">{name}</span>
       </Link>
     </li>
   );

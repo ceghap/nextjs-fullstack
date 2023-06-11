@@ -13,11 +13,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="min-h-screen bg-gray-100">
+        <div className="min-h-scree">
           <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
             <div className="lg:grid lg:grid-cols-2 lg:gap-8">
               <div>
-                <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                <h2 className="text-3xl font-extrabold dark:text-white text-gray-900 sm:text-4xl">
                   Nextjs fullstack template
                 </h2>
                 <p className="mt-4 text-lg text-gray-500">
@@ -29,7 +29,7 @@ export default function Home() {
             <div className="mt-10">
               <dl className="space-y-10">
                 <div>
-                  <dt className="text-lg font-medium leading-6 text-gray-900">
+                  <dt className="text-lg font-medium leading-6 dark:text-white text-gray-900">
                     Stack
                   </dt>
                   <dd className="mt-2 text-base text-gray-500">
@@ -48,7 +48,7 @@ export default function Home() {
               </dl>
             </div>
             <div className="mt-10">
-              <h3 className="text-lg font-medium leading-6 text-gray-900">
+              <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-white">
                 Getting started
               </h3>
               <div className="mt-4 text-base text-gray-500">
@@ -91,7 +91,7 @@ export default function Home() {
                   </a>
                   .
                 </p>
-                <h4 className="mt-6 text-lg font-medium leading-6 text-gray-900">
+                <h4 className="mt-6 text-lg font-medium leading-6 text-gray-900 dark:text-white">
                   Prisma notes
                 </h4>
                 <ol className="list-decimal pl-5">
@@ -118,7 +118,7 @@ export default function Home() {
               </div>
             </div>
             <div className="mt-10">
-              <h3 className="text-lg font-medium leading-6 text-gray-900">
+              <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-white">
                 Features
               </h3>
               <ul className="mt-4 list-disc pl-5 text-base text-gray-500">

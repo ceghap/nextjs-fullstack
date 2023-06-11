@@ -1,3 +1,5 @@
+import { ThemeToggle } from "./ThemeToggle";
+
 const Header = () => {
   return (
     <header>
@@ -609,6 +611,9 @@ const Header = () => {
                 alt="user photo"
               />
             </button>
+            <div className="relative top-[6px] ml-2">
+              <ThemeToggle />
+            </div>
             {/* Dropdown menu */}
             <div
               className="z-50 my-4 hidden w-56 list-none divide-y divide-gray-100 rounded bg-white text-base shadow dark:divide-gray-600 dark:bg-gray-700"
