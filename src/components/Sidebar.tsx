@@ -37,7 +37,7 @@ const Sidebar = () => {
               <span className="text-2xl text-gray-400 group-hover:text-gray-900">
                 <MdPowerSettingsNew />
               </span>
-              <span className="ml-3">Sign Out</span>
+              <span className="ml-3 dark:text-white">Sign Out</span>
             </button>
           </li>
         </ul>
