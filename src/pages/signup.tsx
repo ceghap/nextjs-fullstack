@@ -8,6 +8,8 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { z } from "zod";
+import { Input } from "../components/ui/input";
+import { Label } from "@radix-ui/react-label";
 
 const registerSchema = z
   .object({
@@ -128,7 +130,7 @@ export default function Signup() {
       <main className="flex justify-center p-4">
         <section className="w-full dark:bg-gray-900">
           <div className="mx-auto flex h-full flex-col items-center justify-center px-6 py-8 lg:py-0">
-            <div className="w-full rounded-lg bg-white sm:max-w-md md:mt-0 xl:p-0">
+            <div className="w-full rounded-lg bg-dark sm:max-w-md md:mt-0 xl:p-0">
               <div className="space-y-4 p-6 sm:p-8 md:space-y-6">
                 <h1 className="text-center text-xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-2xl">
                   Sign up for an account
@@ -136,7 +138,7 @@ export default function Signup() {
 
                 <form onSubmit={onSubmit} className="flex flex-col">
                   <div className="mb-6">
-                    <label
+                    <Label
                       htmlFor="email"
                       className={`mb-2 block text-sm font-medium ${
                         errors.email
@@ -145,8 +147,8 @@ export default function Signup() {
                       }`}
                     >
                       Email address
-                    </label>
-                    <input
+                    </Label>
+                    <Input
                       type="email"
                       id="email"
                       className={`block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 ${
@@ -167,7 +169,7 @@ export default function Signup() {
                   {watch("haspassword") && (
                     <>
                       <div className="mb-6">
-                        <label
+                        <Label
                           htmlFor="password"
                           className={`mb-2 block text-sm font-medium ${
                             errors.password
@@ -176,8 +178,8 @@ export default function Signup() {
                           }`}
                         >
                           Password
-                        </label>
-                        <input
+                        </Label>
+                        <Input
                           type="password"
                           id="password"
                           className={`block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 ${
@@ -196,7 +198,7 @@ export default function Signup() {
                         )}
                       </div>
                       <div className="mb-6">
-                        <label
+                        <Label
                           htmlFor="confirm_password"
                           className={`mb-2 block text-sm font-medium ${
                             errors.confirmPassword
@@ -205,8 +207,8 @@ export default function Signup() {
                           }`}
                         >
                           Confirm password
-                        </label>
-                        <input
+                        </Label>
+                        <Input
                           type="password"
                           id="confirm_password"
                           className={`block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 ${
@@ -227,7 +229,7 @@ export default function Signup() {
                       <div className="mb-6 ">
                         <div className="flex items-start">
                           <div className="flex h-5 items-center">
-                            <input
+                            <Input
                               id="remember"
                               type="checkbox"
                               value=""
@@ -236,7 +238,7 @@ export default function Signup() {
                               {...register("terms")}
                             />
                           </div>
-                          <label
+                          <Label
                             htmlFor="remember"
                             className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                           >
@@ -248,7 +250,7 @@ export default function Signup() {
                               terms and conditions
                             </Link>
                             .
-                          </label>
+                          </Label>
                         </div>
                         {errors.terms && (
                           <p className="mt-2 text-sm text-red-600 dark:text-red-500">
@@ -262,7 +264,7 @@ export default function Signup() {
                   <div className="mb-6 ">
                     <div className="flex items-start">
                       <div className="flex h-5 items-center">
-                        <input
+                        <Input
                           id="isnotpasswordless"
                           type="checkbox"
                           value=""
@@ -270,12 +272,12 @@ export default function Signup() {
                           {...register("haspassword")}
                         />
                       </div>
-                      <label
+                      <Label
                         htmlFor="isnotpasswordless"
                         className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                       >
                         I want to set password
-                      </label>
+                      </Label>
                     </div>
                   </div>
 
@@ -290,7 +292,7 @@ export default function Signup() {
                   </button>
                 </form>
 
-                <label className="mt-4 text-center text-sm font-medium text-gray-900 dark:text-gray-300">
+                <Label className="mt-4 text-center text-sm font-medium text-gray-900 dark:text-gray-300">
                   Already have an account?{" "}
                   <Link
                     href="/signin"
@@ -299,7 +301,7 @@ export default function Signup() {
                     Sign in
                   </Link>
                   .
-                </label>
+                </Label>
 
                 <hr />
 
