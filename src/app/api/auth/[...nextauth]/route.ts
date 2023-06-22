@@ -8,7 +8,7 @@ import { nodemailerServer } from "src/utils/constant";
 
 const prisma = new PrismaClient();
 
-export default NextAuth({
+const handler = NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
@@ -109,3 +109,5 @@ export default NextAuth({
   },
   secret: process.env.NEXTAUTH_SECRET,
 });
+
+export { handler as GET, handler as POST };

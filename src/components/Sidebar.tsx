@@ -10,23 +10,23 @@ import SidebarItem from "./SidebarItem";
 const Sidebar = () => {
   return (
     <aside
-      className="fixed top-0 left-0 h-full w-64 pt-16"
+      className="fixed left-0 top-0 h-full w-64 pt-16"
       aria-label="Sidenav"
     >
-      <div className="flex h-full flex-col justify-between overflow-y-auto border-r border-gray-200 bg-white py-5 px-3 dark:border-gray-700 dark:bg-gray-800">
+      <div className="flex h-full flex-col justify-between overflow-y-auto border-r border-gray-200 bg-white px-3 py-5 dark:border-gray-700 dark:bg-gray-800">
         <ul className="space-y-2">
           <SidebarItem icon={<MdHome />} name="Home" link="/protected" />
           <SidebarItem
             icon={<MdListAlt />}
             name="Users"
-            link="/protected/users"
+            link="/dashboard/users"
           />
         </ul>
         <ul className="mt-5 space-y-2 border-t border-gray-200 pt-5 dark:border-gray-700">
           <SidebarItem
             icon={<MdSettings />}
             name="Account"
-            link="/protected/account"
+            link="/dashboard/account"
           />
 
           <li className="group p-2 text-base font-normal text-gray-900 hover:bg-gray-100">

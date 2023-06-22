@@ -9,11 +9,11 @@ export default withAuth(
         req.nextauth.token?.user?.role !== "ADMIN" &&
         req.nextauth.token?.user?.role === "USER"
       ) {
-        return NextResponse.redirect(new URL("/protected", req.url));
+        return NextResponse.redirect(new URL("/dashboard", req.url));
       }
 
       if (
-        req.nextUrl.pathname.startsWith("/protected") &&
+        req.nextUrl.pathname.startsWith("/dashboard") &&
         req.nextauth.token?.user?.role !== "USER" &&
         req.nextauth.token?.user?.role === "ADMIN"
       ) {
@@ -25,7 +25,7 @@ export default withAuth(
       }
 
       if (req.nextauth.token?.user?.role === "USER") {
-        return NextResponse.rewrite(new URL("/protected", req.url));
+        return NextResponse.rewrite(new URL("/dashboard", req.url));
       }
 
       return NextResponse.next();
@@ -41,5 +41,5 @@ export default withAuth(
 );
 
 export const config = {
-  matcher: ["/manage/:path*", "/protected/:path*"],
+  matcher: ["/manage/:path*", "/dashboard/:path*"],
 };

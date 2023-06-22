@@ -1,5 +1,7 @@
+"use client";
+
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { CgMenu } from "react-icons/cg";
 import { ThemeToggle } from "./ThemeToggle";
 const Navbar = () => {
@@ -28,10 +30,11 @@ const Navbar = () => {
             <li>
               <Link
                 href="/"
-                className={`block rounded bg-blue-700 py-2 pl-3 pr-4 md:bg-transparent md:p-0 ${router.asPath === "/"
-                  ? "dark:text-white md:text-blue-700"
-                  : "text-gray-700 dark:text-gray-400"
-                  }`}
+                className={`block rounded bg-blue-700 py-2 pl-3 pr-4 md:bg-transparent md:p-0 ${
+                  router.asPath === "/"
+                    ? "dark:text-white md:text-blue-700"
+                    : "text-gray-700 dark:text-gray-400"
+                }`}
                 aria-current="page"
               >
                 Home
@@ -40,20 +43,22 @@ const Navbar = () => {
             <li>
               <Link
                 href="/about"
-                className={`block rounded py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white ${router.asPath === "/about"
-                  ? "dark:text-white md:text-blue-700"
-                  : "text-gray-700 dark:text-gray-400"
-                  }`}
+                className={`block rounded py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white ${
+                  router.asPath === "/about"
+                    ? "dark:text-white md:text-blue-700"
+                    : "text-gray-700 dark:text-gray-400"
+                }`}
               >
                 About
               </Link>
             </li>
             <li>
               <Link
-                className={`block rounded py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white ${router.asPath === "/signin"
-                  ? "dark:text-white md:text-blue-700"
-                  : "text-gray-700 dark:text-gray-400"
-                  }`}
+                className={`block rounded py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white ${
+                  router.asPath === "/signin"
+                    ? "dark:text-white md:text-blue-700"
+                    : "text-gray-700 dark:text-gray-400"
+                }`}
                 href="/signin"
               >
                 Sign in
